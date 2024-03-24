@@ -15,9 +15,20 @@ export const createPost = async (data: Prisma.PostCreateInput) => {
   return post;
 };
 
-export const getPosts = async (id?: number) => {
+export const getPosts = async (
+  id?: number,
+  authourId?: number,
+  page: number = 0,
+  take: number = 10
+) => {
   return await prisma.post.findMany({
-    where: id ? { id: id } : undefined,
+    skip: page,
+    take: take,
+    //only put authorId statement if authourId is not null also put id statement if id is not null
+    where: {
+      authorId: authourId,
+      id: id,
+    },
     select: {
       id: true,
       createdAt: true,
@@ -32,5 +43,27 @@ export const getPosts = async (id?: number) => {
       },
     },
     orderBy: { createdAt: "desc" },
+  });
+};
+
+export const deletePost = async (id: number) => {
+  return prisma.post.delete({
+    where: {
+      id: id,
+    },
+  });
+};
+
+export const updatePost = async (
+  id: number,
+  data: Prisma.PostUpdateInput,
+  userId: number
+) => {
+  return prisma.post.update({
+    where: {
+      authorId: userId,
+      id: id,
+    },
+    data: data,
   });
 };

@@ -74,3 +74,15 @@ export const updateProfilePicture = async (id: number, url: string) => {
 
   return user;
 };
+
+export const updateUser = async (id: number, data: Prisma.UserUpdateInput) => {
+  const user = await prisma.user.update({
+    where: {
+      id: id,
+    },
+    data: data,
+    select: prismaExclude("User", ["password"]),
+  });
+
+  return user;
+};

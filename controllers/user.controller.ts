@@ -4,6 +4,7 @@ import {
   createUser,
   getUser,
   deleteUser,
+  updateUser,
 } from "../services/user.service";
 
 export const show = async (req: Request, res: Response, next: NextFunction) => {
@@ -61,6 +62,28 @@ export const remove = async (
     const id: number = parseInt(req.params.id as string);
 
     const user = await deleteUser(id);
+
+    return res.status(200).json({ message: "Success!", user: user });
+  } catch (error: any) {
+    next(error);
+  }
+};
+
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id: number = parseInt(req.params.id as string);
+    const { email, password, fullname, profileUrl } = req.body;
+
+    const user = await updateUser(id, {
+      email: email,
+      password: password,
+      fullname: fullname,
+      profileUrl: profileUrl,
+    });
 
     return res.status(200).json({ message: "Success!", user: user });
   } catch (error: any) {
