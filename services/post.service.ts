@@ -24,7 +24,6 @@ export const getPosts = async (
   return await prisma.post.findMany({
     skip: page,
     take: take,
-    //only put authorId statement if authourId is not null also put id statement if id is not null
     where: {
       authorId: authourId,
       id: id,
