@@ -37,52 +37,52 @@ Ensure you have the following installed on your machine:
 
 1. Clone the repository:
 
-\`\`\`bash
+```bash
 git clone https://github.com/ibrahimozkn/portfolio-backend.git
 cd portfolio-backend
-\`\`\`
+```
 
 2. Install the dependencies:
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 or
 
-\`\`\`bash
+```bash
 yarn install
-\`\`\`
+```
 
 ### Database Setup
 
 1. Create a \`.env\` file in the root of the project and add your database connection string:
 
-\`\`\`env
+```env
 DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<database>?schema=public"
-\`\`\`
+```
 
 2. Migrate the database schema:
 
-\`\`\`bash
+```bash
 npx prisma migrate dev --name init
-\`\`\`
+```
 
 ### Running the Application
 
 1. Start the development server:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 or
 
-\`\`\`bash
+```bash
 yarn dev
-\`\`\`
+```
 
-2. The server should now be running on \`http://localhost:3000\`.
+2. The server should now be running on `http://localhost:3000\`.
 
 ## Database Schema
 
@@ -92,7 +92,7 @@ The database schema for this project is shown below:
 
 ## Project Structure
 
-\`\`\`bash
+```bash
 .
 ├── controllers       # Contains the request handlers for the API
 ├── helpers           # Utility functions and middlewares
@@ -103,7 +103,7 @@ The database schema for this project is shown below:
 ├── package.json      # Project metadata and dependencies
 ├── tsconfig.json     # TypeScript configuration
 └── .gitignore        # Files and directories to be ignored by git
-\`\`\`
+```
 
 ## Contributing
 
